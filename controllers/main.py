@@ -5,6 +5,7 @@ class ReportChartController(Controller):
     def report_pie_chart(self,labels=None,sizes=None,colors=None,explode=None):
         import matplotlib
         matplotlib.use('Agg')
+        matplotlib.rcParams['font.size'] = 14
         import matplotlib.pyplot as plt
         import cStringIO                  
         from matplotlib.backends.backend_agg import FigureCanvasAgg
@@ -26,13 +27,8 @@ class ReportChartController(Controller):
             for e in explodeTmp:
                 explode.append(float(e))
         
-        #Demo values
-        #labels = 'Frogs', 'Hogs', 'Dogs', 'Logs'
-        #sizes = [15, 30, 45, 10]
-        #colors = ['yellowgreen', 'gold', 'lightskyblue', 'lightcoral']
-        #explode = (0, 0.1, 0, 0) # only "explode" the 2nd slice (i.e. 'Hogs')
-
-        plt.pie(sizes, explode, labels, colors,autopct='%1.1f%%', shadow=True, startangle=90)
+        plt.figure(figsize=(8,4))
+        plt.pie(sizes, explode, labels, colors,autopct='%1.1f%%', shadow=False, startangle=90)
         plt.axis('equal')
         
         fig = plt.gcf()
@@ -46,7 +42,7 @@ class ReportChartController(Controller):
         finally:
             buf.close()
         
-        plt.close()
+        plt.close('all')
         plt.clf()
         plt.cla()
         
