@@ -29,7 +29,7 @@ class ReportChartController(Controller):
             for e in explodeTmp:
                 explode.append(float(e))
         
-        fig = plt.figure(figsize=(8,4))
+        fig = plt.figure(figsize=(7,4))
         fig.patch.set_color('#FFFFFF')
         ax = fig.add_subplot(111)
         ax.pie(sizes, explode, labels, colors,autopct='%1.1f%%', shadow=False, startangle=90)
