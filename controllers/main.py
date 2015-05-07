@@ -7,6 +7,9 @@ class ReportChartController(Controller):
         matplotlib.use('Agg')
         matplotlib.rcParams['font.size'] = 14
         import matplotlib.pyplot as plt
+        plt.rcParams['patch.edgecolor'] = '#EE7F2E' 
+        plt.rcParams['patch.linewidth'] = 2  
+
         import cStringIO                  
         from matplotlib.backends.backend_agg import FigureCanvasAgg
         
@@ -20,9 +23,9 @@ class ReportChartController(Controller):
         if colors:
             colors = colors.split(",")
         else:
-            colors = ('b', 'g', 'r', 'c', 'm', 'y', 'k', 'w')
-            #Orange colors
-            #colors = ('#e55300','#ff6900','#ff5c00','#ff8106','#ff9f00','#ff2b00')
+            #colors = ('b', 'g', 'r', 'c', 'm', 'y', 'k', 'w')
+            #custom colours
+            colors = ('#A6A6A6','#F6F3F3','#A5A085','#B0BFBF','#E9EAEE')
         if explode:
             explodeTmp = explode.split(",")
             explode = []
@@ -34,7 +37,7 @@ class ReportChartController(Controller):
         ax = fig.add_subplot(111)
         ax.pie(sizes, explode, labels, colors,autopct='%1.1f%%', shadow=False, startangle=90)
         ax.axis('equal')
-        
+
         canvas = FigureCanvasAgg(fig)
         
         buf = cStringIO.StringIO()
