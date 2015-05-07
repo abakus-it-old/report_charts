@@ -20,9 +20,9 @@ class ReportChartController(Controller):
         if colors:
             colors = colors.split(",")
         else:
-            #colors = ('b', 'g', 'r', 'c', 'm', 'y', 'k', 'w')
+            colors = ('b', 'g', 'r', 'c', 'm', 'y', 'k', 'w')
             #Orange colors
-            colors = ('#e55300','#ff6900','#ff5c00','#ff8106','#ff9f00','#ff2b00')
+            #colors = ('#e55300','#ff6900','#ff5c00','#ff8106','#ff9f00','#ff2b00')
         if explode:
             explodeTmp = explode.split(",")
             explode = []
