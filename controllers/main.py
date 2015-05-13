@@ -32,10 +32,15 @@ class ReportChartController(Controller):
             for e in explodeTmp:
                 explode.append(float(e))
         
-        fig = plt.figure(figsize=(6,4))
+        def my_autopct(pct):
+            total=sum(sizes)
+            val=int(pct*total/100.0)
+            return '{p:.2f}% ({v:d})'.format(p=pct,v=val)
+
+        fig = plt.figure(figsize=(7,4))
         fig.patch.set_color('#FFFFFF')
         ax = fig.add_subplot(111)
-        ax.pie(sizes, explode, labels, colors,autopct='%1.1f%%', shadow=False, startangle=90)
+        ax.pie(sizes, explode, labels, colors, shadow=False, startangle=90, autopct=my_autopct) #autopct='%1.1f%%'
         ax.axis('equal')
 
         canvas = FigureCanvasAgg(fig)
