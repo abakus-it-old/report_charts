@@ -1,4 +1,7 @@
 from openerp.addons.web.http import Controller, route, request
+import numpy as np
+import logging
+_logger = logging.getLogger(__name__)
 
 class ReportChartController(Controller):
     @route(['/report/chart/pie'], type='http', auth="user")
@@ -40,8 +43,14 @@ class ReportChartController(Controller):
         fig = plt.figure(figsize=(7,4))
         fig.patch.set_color('#FFFFFF')
         ax = fig.add_subplot(111)
-        ax.pie(sizes, explode, labels, colors, shadow=False, startangle=90, autopct=my_autopct) #autopct='%1.1f%%'
+        patches = ax.pie(sizes, explode, labels, colors, shadow=False, startangle=90, radius=1.2) #autopct='%1.1f%%'
         ax.axis('equal')
+
+        # Legend
+        values = np.array(sizes)
+        porcent = 100.*values/values.sum()
+        labels_with_porcents = ['{0} - {1:1.2f} %'.format(i,j) for i,j in zip(labels, porcent)]
+        ax.legend(labels_with_porcents, loc='best', bbox_to_anchor=(0.5, 0.7), fontsize=12)
 
         canvas = FigureCanvasAgg(fig)
         
