@@ -10,8 +10,9 @@
     This modules adds charts for report. The Python library 'matplotlib' is required.
 
     /!\ Need to install NUMPY on your server.
-    - apt-get install python-pip
-    - pip install numpy
+    - sudo apt-get install python-pip python-dev build-essential
+    - get last numpy version
+    - python setup.py install
 
     This module has been developed by Bernard Delhez, intern @ AbAKUS it-solutions, under the control of Valentin Thirion.
     """,
