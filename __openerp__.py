@@ -7,13 +7,15 @@
     'category': 'Report',
     'description': 
     """
-This modules adds charts for report. The Python library 'matplotlib' is required.
+    Charts in Report for Odoo
 
-matplotlib installation:
+    This modules adds charts for report. The Python library 'matplotlib' is required.
+
+    matplotlib installation:
     - Debian / Ubuntu : sudo apt-get install python-matplotlib
     - Fedora / Redhat : sudo yum install python-matplotlib
 
-This module has been developed by Bernard Delhez, intern @ AbAKUS it-solutions, under the control of Valentin Thirion.
+   This module has been developed by Bernard Delhez, intern @ AbAKUS it-solutions, under the control of Valentin Thirion.
     """,
     'data': [],
 }
